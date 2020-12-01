@@ -1,0 +1,90 @@
+
+body{padding: 0px; background-image: radial-gradient(rgb(28, 73, 170),#000);margin: 0px; min-height: 100vh; color: #FFF; font-family: "Encode Sans Condensed",  'Saira Semi Condensed','Quicksand',"Open Sans",sans-serif;}
+.nuco-container{
+    min-height: 100vh;
+    width: 100%;
+}
+.nuco-name, .smallLineHeight{
+    white-space: nowrap; line-height: 1em;
+}
+
+.nuco-elearn{
+    margin-bottom: 20px;
+}
+.nuco-btn{
+    background-color: transparent; padding: 8px 16px; color: #FFF; border:rgba(255,255,255,.5) solid thin; border-radius: 4px; font-size:1.6em;
+}
+
+.nuco-btn span{
+ margin-right: 15px;
+}
+
+.animate-slow{
+    animation-duration: 0.3s !important;
+}
+
+.animate-delay-1{
+    animation-delay: 0.3s;
+}.animate-delay-0-5{
+    animation-delay: 0.15s;
+}
+
+.animate-delay-1-5{
+    animation-delay: 0.7s;
+}
+
+.animate-delay-2{
+    animation-delay: 1s;
+}
+
+.animate-fill-both{
+    animation-fill-mode: both !important;
+}.clear{
+    clear: both;
+}
+
+.animate-fill-back{
+    animation-fill-mode: backwards !important;
+}
+.school{
+    width: 100%; height: auto; max-width: 400px; margin: auto;
+}
+.main-head{
+    width: 100%; height: auto; background-color: rgba(0,0,0,.6);padding: 20px 0px; border-radius: 3px; position: sticky; top: 0px; z-index: 5;
+}.main-head .icon-bx,.main-head .cont-bx,.main-head .icon-back{
+    display: block; width: 50px; float: left; text-align: right;
+}.main-head .cont-bx{
+    width: calc(100% - 110px); margin-left: 8px; text-align: left;
+}.main-head .icon-back{
+    width: 50px; text-align: left; background-color: transparent; border: none; color: #FFF;
+}
+
+.main-text{
+    text-align: left; margin:20px 0px 20px 0px
+}
+
+.school .nuco-btn{
+    width: 100%; margin-bottom: 20px; text-align: left; display: block; text-decoration: none;
+}
+
+.school .nuco-btn i{
+ display: block; float: right; margin-top: 5px;
+}
+
+.school .nuco-btn i::after{
+  content: ' ';
+  clear: both;
+}
+
+video{
+    width: 100%;
+}
+
+.nuco-body .loading{
+  font-size: 3em;
+  margin-top:50px;
+}
+
+.nuco-page + .nuco-page{
+    display: none;
+}
