@@ -55,8 +55,11 @@ $course = [
 
 // Lessons/Video Data
 $lessons = [
-    "1_1_1_1_1_1"=>[
-      1=>["Title"=>"Algebra","Video"=>"videoak/v.mp4","Details"=>"Trigonometry Part1","Link"=>""]
+    "questions"=>[
+      1=>["Title"=>"Algebra","Question"=>"Which of the following best describe the President of Nigeria, Mr Muhamadu Buhari and his so called APC Goverment","ID"=>"q1","Link"=>"","Options"=>["A: Looters and Frausters","B: Ina and Bonboclax","C: Good and Generous","D: Wicked and Heartless"]],
+      2=>["Title"=>"Algebra","Question"=>"Which of the following best describe the President of Nigeria, Mr Muhamadu Buhari and his so called APC Goverment","ID"=>"q1","Link"=>"","Options"=>["A: Looters and Frausters","B: Ina and Bonboclax","C: Good and Generous","D: Wicked and Heartless"]],
+      3=>["Title"=>"Algebra","Question"=>"Which of the following best describe the President of Nigeria, Mr Muhamadu Buhari and his so called APC Goverment","ID"=>"q1","Link"=>"","Options"=>["A: Looters and Frausters","B: Ina and Bonboclax","C: Good and Generous","D: Wicked and Heartless"]]
+      ,4=>["Title"=>"Algebra","Question"=>"Which of the following best describe the President of Nigeria, Mr Muhamadu Buhari and his so called APC Goverment","ID"=>"q1","Link"=>"","Options"=>["A: Looters and Frausters","B: Ina and Bonboclax","C: Good and Generous","D: Wicked and Heartless"]]
     ]             
   ];
 

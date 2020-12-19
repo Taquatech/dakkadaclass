@@ -46,8 +46,9 @@ if(videos.length > 0){
           if(_.IsFound(pg)){
             PageID += "_"+Data;
           }
+          var BackID = "Bk_"+Data;
         //get the template
-        _('nuco-main-cont').insertAdjacentHTML("afterbegin",_('nuco-page-template').innerHTML.replace('{{PageID}}',PageID));
+        _('nuco-main-cont').insertAdjacentHTML("afterbegin",_('nuco-page-template').innerHTML.replace('{{PageID}}',PageID).replace('{{BackID}}',BackID));
         Elearn.Loader("script/loader.php",{Data:Data,PageID:PageID}).then((res)=>{
             //alert(res);
             Elearn.Filler(PageID,res);

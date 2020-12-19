@@ -11,12 +11,28 @@ body{padding: 0px; background-image: radial-gradient(rgb(28, 73, 170),#000);marg
 .nuco-elearn{
     margin-bottom: 20px;
 }
-.nuco-btn{
-    background-color: transparent; padding: 8px 16px; color: #FFF; border:rgba(255,255,255,.5) solid thin; border-radius: 4px; font-size:1.6em;
+.nuco-btn, .nuco-tb{
+    background-color: transparent; padding: 8px 16px; color: #FFF; border:rgba(255,255,255,.3) solid thin; border-radius: 4px; font-size:1.6em;max-width: 400px;
+}
+
+.nuco-tb input{
+    background-color: transparent;
+border: navajowhite;
+color: #FFF;
+width: calc(100% - 30px);
+margin-left: 6px;
+}
+
+.centralized{
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
 }
 
 .nuco-btn span{
  margin-right: 15px;
+ display: inline-block;
+ vertical-align: middle;
 }
 
 .animate-slow{
@@ -47,7 +63,7 @@ body{padding: 0px; background-image: radial-gradient(rgb(28, 73, 170),#000);marg
     animation-fill-mode: backwards !important;
 }
 .school{
-    width: 100%; height: auto; max-width: 400px; margin: auto;
+    width: 100%; height: auto; /* max-width: 400px; */ margin: auto;
 }
 .main-head{
     width: 100%; height: auto; background-color: rgba(0,0,0,.6);padding: 20px 0px; border-radius: 3px; position: sticky; top: 0px; z-index: 5;
@@ -64,7 +80,7 @@ body{padding: 0px; background-image: radial-gradient(rgb(28, 73, 170),#000);marg
 }
 
 .school .nuco-btn{
-    width: 100%; margin-bottom: 20px; text-align: left; display: block; text-decoration: none;
+    width: 100%; margin-top: 20px;  text-align: left; display: block; text-decoration: none;
 }
 
 .school .nuco-btn i{
@@ -87,4 +103,32 @@ video{
 
 .nuco-page + .nuco-page{
     display: none;
+}
+.nuco-btn .radio-circle{
+ display: inline-block; margin-right: 10px; width: 20px; height: 20px; border-radius: 50%; background-color: rgba(255,255,255,.3);vertical-align: middle;
+ /* border:rgba(255,255,255,.3) solid thin; */
+}
+
+.radio-circle .radio-circle-inner{
+  width: 10px; height: 10px; margin: 5px; background-color: #FFF;border-radius: 50%; 
+}
+
+.radio-circle + span{
+    width:calc(100% - 50px); vertical-align: text-top;
+}
+
+.nuco-btn{
+    position: relative;
+}
+
+.nuco-btn .nuco-radio-input{
+ position: absolute; top: 0px; left: 0px; width: 100%; height: 100%; opacity: 0;
+}
+
+.nuco-btn .nuco-radio-input + .radio-circle .radio-circle-inner{
+    display: none;
+}
+
+.nuco-btn .nuco-radio-input:checked + .radio-circle .radio-circle-inner{
+    display: block;
 }

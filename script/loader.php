@@ -8,15 +8,21 @@ function SchoolPage(){
 /* Should Normaly Select From Database*/
 //nuco temp
 $headtitle = 'Akwa Ibom State';
-$mk = Title("Select your School");
-foreach($schools as $key=>$det){
+$mk = Centered();
+$mk .= '<img src="images/logo2.png" alt="AKRP" style="width:180px" class="fadeInUp animate-delay animate-fill-both">';
+$mk .= Title("Login with your AKRP Credentials");
+ $mk .= TextBox("Phone Number",'style="border-radius:4px 4px 0px 0px;"',"mbri-users") ;
+$mk .= Password("Password",'style="border-radius:0px 0px 4px 4px;border-top:none"',"mbri-lock") ;
+$mk .= Button("Verify","Elearn.Load('ClassPage',1)");
+$mk .= _Centered();
+/* foreach($schools as $key=>$det){
   if(is_string($det))$det = ["Title"=>$det];
   if(isset($det["Link"]) && trim($det["Link"]) != ""){
     $mk .= LinkButton($det["Title"],$det["Link"]) ;
   }else{
     $mk .= Button($det["Title"],"Elearn.Load('ClassPage',".$key.")") ;
   }
-}
+} */
 /* foreach([1=>"Nursery","Primary"] as $key=>$sch){
   $mk .= Button($sch,"Elearn.Load('ClassPage',".$key.")") ;
 }
@@ -37,9 +43,28 @@ function ClassPage($SchID=0){
   //nuco temp
   //get the class details
   $classDet = $datas[$SchID];
-  $headtitle = $classDet['Title'];
-  $mk = Title("Select your Faculty");
-  foreach($classDet['Class'] as $key=>$sch){
+  $headtitle = "Screening Test";
+  $mk = Grid1("l5 m6");
+  $mk .= '<img src="images/paasp.png" alt="AKRP" class="fadeInUp animate-delay-2 animate-fill-both" style="width:200px;border-radius:50%;margin-top:20px">';
+  $mk .= _Grid1();
+  
+  $mk .= Grid2("l7 m6");
+  $mk .= Title("Welcome <strong>Enefiok Duke</strong>");
+  $mk .= '<p class="fadeInUp animate-delay-2 animate-fill-both" style="text-align:left;font-size:1.1em">You are about to start your Test for AKRP Aplication (<strong>AKRP/2020/001</strong>).</p>' ;
+  $mk .= Title("Stats:");
+  $mk .= '<ul class="fadeInUp animate-delay-2 animate-fill-both" style="text-align:left;font-size:1.1em;margin-top:0px;paddin-top:0px">
+  <li>Test Duration: <strong>2Hr 30Min</strong></li>
+  <li>Total Question: <strong>50</strong></li>
+  </ul>' ;
+  $mk .= Title("Note:");
+  $mk .= '<ul class="fadeInUp animate-delay-2 animate-fill-both" style="text-align:left;font-size:1.1em;margin-top:0px;paddin-top:0px">
+  <li>You are not Expected to Close/Cancel the Test</li>
+  <li>Use the Navigation Keys to move across questions</li>
+  
+  </ul>' ;
+  $mk .= Button("Continue","Elearn.Load('LessonPage','questions_1')") ;
+  $mk .= _Grid2();
+  /* foreach($classDet['Class'] as $key=>$sch){
     if(is_string($sch))$sch = ["Title"=>$sch];
     if(isset($sch["Link"]) && trim($sch["Link"]) != ""){
       $mk .= LinkButton($sch["Title"],$sch["Link"]) ;
@@ -47,7 +72,7 @@ function ClassPage($SchID=0){
       $mk .= Button($sch['Title'],"Elearn.Load('SubjectPage','".$key."')") ;
     }
     
-  }
+  } */
   exit(json_encode([$headtitle,$mk]));
   }
 
@@ -193,37 +218,63 @@ $classDet = $datas[$Data];
     $dd = explode("_",$Data);
     $lesson = array_pop($dd);
     $Data = implode("_",$dd);
-    if(isset($datas[$Data]) && isset($datas[$Data][$lesson])){
+    if(isset($datas[$Data])){
       $classDet = $datas[$Data][$lesson];
     $nlesson = (int)$lesson + 1;
-    $headtitle = $classDet["Title"]."/".count($datas[$Data]);
-    $mk = Title($classDet['Details']);
+    $tot = count($datas[$Data]);
+    $headtitle = "Akwa Ibom State"; 
+    $mk = Grid1("m6");
+    $mk .= Title("Q <strong class='w3-large'>$lesson</strong>/$tot");
+    $mk .= Title($classDet['Question']);
     if(isset($classDet["Video"]) && trim($classDet["Video"]) != ""){
-      $mk .= Video($classDet["Video"]);
+     // $mk .= Video($classDet["Video"]);
     }
-
+    $mk .= _Grid1();
+    $mk .= Grid2("m6");
     if(isset($classDet["Link"]) && trim($classDet["Link"]) != ""){
       $mk .= LinkButton('Play Now',$classDet['Link']) ;
     }
 
-    $mk .= Title("Available Downloads","animate-delay-2");
-    $mk .= Button("PDF","","width:50%;float:left","mbri-file") ;
-    $mk .= Button("AUDIO","","width:50%;float:left","mbri-music") ;
+    $mk .= Title("Options","animate-delay-2");
+foreach($classDet["Options"] as $op){
+  $mk .= Radio($op,"opti$lesson","","","font-size:1.3em") ;
+}
+$mk .= _Grid2();
+$mk .= Grid1("s6 m6");
+if($lesson > 1){
+  $mk .= Button('<i class="fas fa-angle-double-left" style="float:none; display:inline"></i> Back',"Elearn.Back(_('Bk_".$Data."_$nlesson'))","width:95%;max-width:150px;font-size:1.3em","") ;
+}else{
+  $mk .= "&nbsp;";
+}
+$mk .= _Grid1();
+$mk .= Grid2("s6 m6");
+if($lesson < $tot){
+  $mk .= Button('Next <i class="fas fa-angle-double-right" style="float:none; display:inline;"></i>',"Elearn.Load('LessonPage','".$Data."_$nlesson')","width:95%;max-width:150px;margin-left:auto;text-align:right;font-size:1.3em","") ;
+}else if($lesson >= $tot){
+  $mk .= Button('<i class="fas fa-thumbs-up" style="float:none; display:inline"></i> Finish',"","width:95%;max-width:150px;margin-left:auto;font-size:1.3em","") ;
+}
+$mk .= _Grid2();
+   
+  /*   $mk .= Radio("B: Ina and Bonboclax","opti") ;
+    $mk .= Radio("C: Good and Generous","opti") ;
+    $mk .= Radio("D: Wicked and Heartless","opti") ; */
+   /*  $mk .= Button("AUDIO","","width:50%;float:left","mbri-music") ;
     $mk .= '<div style="clear:both"></div>';
     $mk .= Title("Assignment","animate-delay-2");
     $mk .= Button("Download","","width:50%;float:left","mbri-down") ;
     $mk .= Button("Upload","","width:50%;float:left","mbri-up") ;
     $mk .= '<div style="clear:both"></div>';
-    $mk .= LinkButton("References","https://www.aksu.edu.ng");
-    if(isset($datas[$Data][$nlesson])){
+    $mk .= LinkButton("References","https://www.aksu.edu.ng"); */
+    /* if(isset($datas[$Data][$nlesson])){
       //$mk .= Button("Next Lesson","Elearn.Load('LessonPage','".$Data."_".$nlesson."')") ;
     }else{
       $mk .= Button("Back to Home","var aa= _('HomePage');aa.parentElement.insertBefore(aa, aa.parentElement.childNodes[0])") ;
-    }
+    } */
     }else{
       $headtitle = "E-Learning";
       $mk = Title("Hoops!!!, E-learning Server not Available at the moment.<br/>Try Again Later");
     }
+    
     
     
     /* foreach($classDet['Subject'] as $key=>$sch){
