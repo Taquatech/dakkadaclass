@@ -18,7 +18,7 @@
 </head>
 <body>
     <?php
-  //function Page($PageID,$Back){
+  //function Page($PageID,$Back){ test
       echo '<div id="nuco-page-template" style="display:none"><div class="school  w3-center nuco-page" id="{{PageID}}">
       <!-- Header -->
       <div class="main-head">
